@@ -67,56 +67,22 @@ UNITS = {
 }
 
 # ================= ACTIONS =================
-
+ 
 ACTIONS = {
     "ADD": [
-        # English
-        "add", "insert", "put",
-
-        # Malayalam script
-        "ചേർക്കൂ", "ചേർക്കുക",
-
-        # Roman Malayalam
-        "cherku", "cherkuka", "cherkoo", "cherkkuka",
-
-        # Hindi script
-        "जोड़ो", "डालो",
-
-        # Roman Hindi
-        "jodo", "daalo", "dalo"
+        "add", "insert", "include",
+        "ചേർക്കുക", "ചേർക്കൂ",
+        "cherkuka", "cherkuga", "cherku", "cherkkuka",
+        "जोड़", "जोड़ो", "जोड़ना",
+        "jod", "jodo", "jodna"
     ],
 
     "REMOVE": [
-        # English
-        "sell", "remove", "delete",
-
-        # Malayalam script
-        "വിൽക്കൂ", "വിട്ടു", "നീക്കം",
-
-        # Roman Malayalam
-        "vittu", "vilkku", "vilkkuka", "vilkuka",
-
-        # Hindi script
-        "बेचो", "निकालो",
-
-        # Roman Hindi
-        "becho", "nikaalo", "nikalo"
-    ],
-
-    "UPDATE": [
-        # English
-        "update", "change",
-
-        # Malayalam script
-        "മാറ്റുക",
-
-        # Roman Malayalam
-        "maattuka", "maatuka", "maatu",
-
-        # Hindi script
-        "बदल",
-
-        # Roman Hindi
-        "badal"
+        "remove", "delete",
+        "ഒഴിവാക്കുക", "ozhivakkuka", "ozhivaku",
+        "हटा", "हटाओ",
+        "निकाल", "निकालो",
+        "hatado", "hatao",
+        "nikal", "nikalo", "nikaldo", "nikal do"
     ]
 }

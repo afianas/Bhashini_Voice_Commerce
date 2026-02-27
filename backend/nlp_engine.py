@@ -1,9 +1,9 @@
 # nlp_engine.py
-
 import re
 import unicodedata
 from rapidfuzz import process, fuzz
 from backend.config import PRODUCTS, UNITS, ACTIONS
+
 
 # -------- Normalize Text --------
 def normalize(text):
@@ -34,41 +34,54 @@ def extract_quantity(text):
 # -------- Extract Price --------
 def extract_price(text):
     match = re.search(r'(\d+)\s?(rupees|rs|₹)', text)
-    if match:
-        return int(match.group(1))
-    return None
+    return int(match.group(1)) if match else None
 
 
-# -------- Extract From Dictionary --------
+# -------- Multi-word Lookup --------
 def extract_from_lookup(text, lookup_dict):
-    words = text.split()
-    for word in words:
-        if word in lookup_dict:
-            return lookup_dict[word]
+    for phrase in lookup_dict:
+        if phrase in text:
+            return lookup_dict[phrase]
     return None
 
 
-# -------- Fuzzy Product Matching --------
+# -------- Better Fuzzy Product Matching --------
 def fuzzy_product_match(text):
-    match, score, _ = process.extractOne(
-        text,
-        PRODUCT_LOOKUP.keys(),
-        scorer=fuzz.partial_ratio
-    )
-    if score > 75:
-        return PRODUCT_LOOKUP[match], score
+    words = text.split()
+
+    best_score = 0
+    best_product = None
+
+    for word in words:
+        match, score, _ = process.extractOne(
+            word,
+            PRODUCT_LOOKUP.keys(),
+            scorer=fuzz.partial_ratio
+        )
+
+        if score > best_score:
+            best_score = score
+            best_product = PRODUCT_LOOKUP.get(match)
+
+    if best_score > 75:
+        return best_product, best_score
+
     return None, 0
 
 
 # -------- Confidence Score --------
-def calculate_confidence(quantity, unit, product_score):
+def calculate_confidence(quantity, unit, product_score, action):
     score = 0
+
+    if action and action != "UNKNOWN":
+        score += 0.2
     if quantity:
         score += 0.3
     if unit:
         score += 0.2
     if product_score > 75:
-        score += 0.5
+        score += 0.3
+
     return round(score, 2)
 
 
@@ -85,10 +98,20 @@ def parse_inventory_command(text):
 
     product_score = 100
 
+    # If no direct match → fuzzy
     if not product:
         product, product_score = fuzzy_product_match(text)
 
-    confidence = calculate_confidence(quantity, unit, product_score)
+    # Smart fallback
+    if not action and product and quantity:
+        action = "ADD"
+
+    confidence = calculate_confidence(
+        quantity,
+        unit,
+        product_score,
+        action
+    )
 
     return {
         "action": action or "UNKNOWN",
