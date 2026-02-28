@@ -222,13 +222,6 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-Backend runs on:
-
-```
-http://localhost:8000
-```
-
----
 
 ## 📱 Frontend Setup
 
@@ -279,25 +272,47 @@ Download APK from Expo dashboard.
 # 🗂 Folder Structure
 
 ```
-invora/
- ├── backend/
- │   ├── main.py
- │   ├── whisper_service.py
- │   ├── nlp_engine.py
- │   ├── gemini_service.py
- │   └── requirements.txt
- │
- ├── frontend/
- │   ├── src/
- │   ├── assets/
- │   ├── App.js
- │   └── package.json
- │
- ├── docs/
- │   ├── architecture.png
- │   └── app-flow.png
- │
- └── README.md
+ibhashini_voice_commerce/
+│
+├── backend/
+│   ├── src/
+│   │   ├── _init_.py
+│   │   ├── main.py
+│   │   ├── config.py
+│   │   ├── nlp_engine.py
+│   │   ├── whisper_service.py
+│   │   └── inspect_ffmpeg.py
+│   │
+│   ├── requirements.txt
+│   └── static/          (if backend serves static files)
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── header.js
+│   │   │   ├── inventory_item.js
+│   │   │   ├── quick_entry.js
+│   │   │   ├── transaction_ledger.js
+│   │   │   ├── verification_modal.js
+│   │   │   ├── voice_footer.js
+│   │   │   └── voice_instruction.js
+│   │   │
+│   │   ├── styles/
+│   │   ├── utils/
+│   │   └── app.js
+│   │
+│   ├── public/
+│   │   └── logo.png
+│   │
+│   ├── package.json
+│   └── package-lock.json
+│
+├── docs/
+│   ├── architecture_diagram.png
+│   ├── api_flow.png
+│   └── deployment_notes.md
+│
+└── README.md
 ```
 
 ---
