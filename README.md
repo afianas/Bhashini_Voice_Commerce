@@ -208,7 +208,7 @@ Category A, B, C items are highlighted in dashboard.
 ## 🔧 Clone Repository
 
 ```bash
-git clone <repo-url>
+git clone <https://github.com/afianas/Invora_Voice_Commerce.git>
 cd invora
 ```
 
@@ -311,10 +311,9 @@ invora/
 
 # 🏗 Architecture Diagram
 
-```
+
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/3913e15c-8071-448d-afcb-7812fb684275" />
 
----
 
 # 🎥 Demo Video
 
@@ -324,14 +323,10 @@ invora/
 
 # 📸 Screenshots
 
-Add at least:
+<img width="716" height="1600" alt="image" src="https://github.com/user-attachments/assets/db9c6485-5897-465a-85dd-a28cd1fcd68a" />
+<img width="716" height="1600" alt="image" src="https://github.com/user-attachments/assets/645cab12-9533-414c-ae22-7fbdfa938cb3" />
+<img width="716" height="1600" alt="image" src="https://github.com/user-attachments/assets/6dc23811-cf96-4be1-939d-ccbe75b8cd3a" />
 
-* Home screen
-* Voice recording screen
-* ABC dashboard
-* Verification modal
-
----
 
 # 👥 Team Members
 
@@ -352,7 +347,7 @@ Add at least:
 
 MIT License
 
----
+
 
 # ❤️ Built For
 
@@ -362,10 +357,4 @@ Regional language users.
 
 Made with ❤️ for inclusive commerce.
 
----
 
-If you want, I can now:
-
-* Make this more investor-level polished
-* Shorten it for hackathon submission
-* Or turn it into a 1-minute pitch script 🔥
